@@ -17,6 +17,7 @@ WebView::WebView(MainWindow* parent): QWebEngineView(parent)
     player = NULL;
     loader = NULL;
     pageIcon = QIcon();
+    this->setStyleSheet("background-color: black;");
 }
 
 /**
@@ -220,6 +221,9 @@ QWebEngineView *WebView::createWindow(QWebEnginePage::WebWindowType type)
         qDebug() << "New fake webview loader";
         loader = new FakeWebView(this);
         QWebEnginePage *newWeb = new QWebEnginePage(loader);
+
+        newWeb->setBackgroundColor(Qt::black);
+
         loader->setAttribute(Qt::WA_DeleteOnClose, true);
         loader->setPage(newWeb);
 

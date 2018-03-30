@@ -2,6 +2,7 @@
 
 FakeWebView::FakeWebView(QWidget *parent) : QWebEngineView(parent)
 {
+    this->setStyleSheet("background-color: black;");
 }
 
 void FakeWebView::setUrl(const QUrl &url)

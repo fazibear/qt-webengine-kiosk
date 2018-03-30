@@ -73,6 +73,8 @@ MainWindow::MainWindow() : QMainWindow()
     delayedResize = new QTimer();
     delayedLoad = new QTimer();
 
+    this->setStyleSheet("background-color: black;");
+
 #ifdef USE_TESTLIB
     simulateClick = new QTestEventList();
 #endif
@@ -269,9 +271,10 @@ void MainWindow::init(QCommandLineParser &options)
     }
 
     setCentralWidget(view);
-
+    QWebEnginePage* page = new QWebEnginePage(view);
+    page->setBackgroundColor(Qt::black);
     view->setSettings(mainSettings);
-    view->setPage(new QWebEnginePage(view));
+    view->setPage(page);
     view->settings()->setAttribute(QWebEngineSettings::JavascriptEnabled,
         mainSettings->value("browser/javascript").toBool()
     );
